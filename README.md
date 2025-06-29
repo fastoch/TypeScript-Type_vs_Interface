@@ -26,7 +26,7 @@ interface AdminProps extends UserProps {
 
 # Interface problem #1
 
-An interface can only describe an **object**, whereas a type alias can describe any data type.  
+An interface can **only** describe an **object**, whereas a type alias can describe any data type.  
 
 # Interface problem #2
 
@@ -37,9 +37,13 @@ type Address = string | string[];
 
 # Interface problem #3
 
-A type alias can easily use utility types.  
-An interface can too but with ugly syntax.  
+A type alias can easily use **utility types**.  
+An interface can too but only with ugly syntax.  
 
 ```ts
-
+type UserProps = {
+    name: string;
+    age: number;
+    createdAt: date;
+}
 ```
