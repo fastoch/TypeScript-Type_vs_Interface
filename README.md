@@ -85,3 +85,31 @@ const project = {
 
 type Specification = typeof project["specification"];
 ```
+
+# Interface problem #6 - merging
+
+Interfaces can be merged.  
+Interfaces are "open", while type aliases are "closed".  
+
+TS will merge the 2 following interfaces:
+```ts
+interface User {
+  name: string;
+  age: number;
+}
+
+interface User {
+  role: string;
+}
+
+let user: User = {
+  // what we can put in there is unpredictable, as anyone can modify the interface 
+}
+```
+
+If we try and do the same with a type alias, the TS compiler will throw an error ("duplicate identifier").  
+You can only declare a type alias once, it cannot be modified afterwards, it is **predictable**.  
+
+# Classes
+
+Type aliases can be used for classes too.  
