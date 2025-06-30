@@ -44,18 +44,18 @@ An interface can too, but with an ugly syntax.
 
 ```ts
 type UserProps = {
-    name: string;
-    age: number;
-    createdAt: Date;
+  name: string;
+  age: number;
+  createdAt: Date;
 }
 
 type GuestProps = Omit<UserProps, 'age' | 'name'>; // only keep createdAt
 
 // we could do the same with an interface
 interface UserProps {
-    name: string;
-    age: number;
-    createdAt: Date;
+  name: string;
+  age: number;
+  createdAt: Date;
 }
 
 interface GuestProps extends Omit<UserProps, 'age' | 'name'> {}
@@ -70,4 +70,18 @@ interface Address extends Array<number | string> {
   0: number;
   1: string;
 }
+```
+
+# Interface problem #5 - extracting type from something else
+
+```ts
+const project = {
+  title: "Project1",
+  specification: {
+    areaSize: 100,
+    rooms: 3
+  }
+}
+
+type Specification = typeof project["specification"];
 ```
