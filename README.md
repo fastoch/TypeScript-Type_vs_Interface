@@ -88,7 +88,7 @@ type Specification = typeof project["specification"];
 
 # Interface problem #6 - merging
 
-Interfaces can be merged.  
+Interfaces can be declared multiple times, and they will be merged in such cases.  
 Interfaces are "open", while type aliases are "closed".  
 
 TS will merge the 2 following interfaces:
@@ -108,8 +108,21 @@ let user: User = {
 ```
 
 If we try and do the same with a type alias, the TS compiler will throw an error ("duplicate identifier").  
-You can only declare a type alias once, it cannot be modified afterwards, it is **predictable**.  
+A type alias can only be declared once, it cannot be modified afterwards, it is **predictable**.  
 
 # Classes
 
 Type aliases can be used for classes too.  
+```ts
+type TUser = {
+  name: string;
+  age: number;
+}
+
+class User implements TUser {
+  constructor(
+    public name: string, 
+    public age: number
+  ) {}
+}
+```
